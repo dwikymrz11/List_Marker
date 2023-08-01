@@ -1,2 +1,4 @@
 [runner]
 magicEnabled = true
+[theme]
+base="dark"

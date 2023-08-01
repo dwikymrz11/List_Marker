@@ -20,18 +20,18 @@ def app():
         st.table({"nama" :response})
     
     if selected == 'Add':
-        gambar = st.file_uploader("Masukan Gambar",accept_multiple_files=True, type=['jpg','png'])
+        gambar = st.file_uploader("Masukan Marker",accept_multiple_files=True, type=['jpg','png'])
         submitGambar = st.button("Submit")
 
         if submitGambar:
             for i in gambar:
                 db.put(i.name , data=i)
-            st.success("Gambar berhasil di upload")
+            st.success("Marker berhasil di upload")
             time.sleep(1)
             st.experimental_rerun()
 
     if selected == 'Look':
-        hasilGambar = st.selectbox('pilih gambar', response)
+        hasilGambar = st.selectbox('pilih Marker', response)
         submitlist = st.button("submit")
 
         if submitlist:
@@ -41,12 +41,12 @@ def app():
 
 
     if selected == 'Delete':
-        gambarBanyak = st.multiselect('pilih gambar', response)
+        gambarBanyak = st.multiselect('pilih Marker', response)
         deleteGambar = st.button("Delete")
 
         if deleteGambar:
             db.delete_many(gambarBanyak)
-            st.success("gambar berhasil di hapus")
+            st.success("Marker berhasil di hapus")
             time.sleep(1)
             st.experimental_rerun()
 
