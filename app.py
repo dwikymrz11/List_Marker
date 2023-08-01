@@ -16,7 +16,7 @@ def app():
             menu_icon="cast", default_index=0, orientation="horizontal")
     response = db.list()["names"]
 
-    with st.expander("List Gambar"):
+    with st.expander("List Marker"):
         st.table({"nama" :response})
     
     if selected == 'Add':
