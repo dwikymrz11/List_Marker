@@ -69,7 +69,7 @@ def app():
             st.header("✏️ Marker", help="halaman untuk mengupload, melihat, dan mendelete marker")
             st.divider()
 
-            selected = option_menu(None, ["Add","Look","Delete"], 
+            selected = option_menu(None, ["Tambahkan","Lihat","Hapus"], 
                     icons=['cloud-arrow-up',"card-image","trash"], 
                     menu_icon="cast", default_index=0, orientation="horizontal")
             response = db.list()["names"]
@@ -77,7 +77,7 @@ def app():
             with st.expander("List Marker"):
                 st.table({"nama" :response})
             
-            if selected == 'Add':
+            if selected == 'Tambahkan':
                 gambar = st.file_uploader("Masukkan Marker",accept_multiple_files=True, type=['jpg','png'])
                 submitGambar = st.button("Masukkan")
                 authenticator.logout("Logout", "main")
@@ -88,7 +88,7 @@ def app():
                     time.sleep(1)
                     st.experimental_rerun()
 
-            if selected == 'Look':
+            if selected == 'Lihat':
                 hasilGambar = st.selectbox('Pilih Marker', response)
                 submitlist = st.button("Lihat")
                 authenticator.logout("Logout", "main")
@@ -98,7 +98,7 @@ def app():
                     st.image(imagedb, caption=hasilGambar)
 
 
-            if selected == 'Delete':
+            if selected == 'Hapus':
                 gambarBanyak = st.multiselect('Pilih Marker', response)
                 deleteGambar = st.button("Delete")
                 authenticator.logout("Logout", "main")
